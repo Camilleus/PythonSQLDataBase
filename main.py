@@ -71,3 +71,7 @@ for student_id in range(1, 31):
     for subject_id in subject_ids:
         cursor.execute('INSERT INTO grades (student_id, subject_id, grade, date) VALUES (?, ?, ?, ?)',
                        (student_id, subject_id, random.randint(2, 5), fake.date_this_decade()))
+
+
+conn.commit()
+conn.close()
