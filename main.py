@@ -60,3 +60,14 @@ for _ in range(30):
 
 for _ in range(3):
     cursor.execute('INSERT INTO professors (name) VALUES (?)', (fake.name(),))
+
+subject_ids = []
+for _ in range(5):
+    professor_id = random.randint(1, 3)
+    cursor.execute('INSERT INTO subjects (name, professor_id) VALUES (?, ?)', (fake.word(), professor_id))
+    subject_ids.append(cursor.lastrowid)
+
+for student_id in range(1, 31):
+    for subject_id in subject_ids:
+        cursor.execute('INSERT INTO grades (student_id, subject_id, grade, date) VALUES (?, ?, ?, ?)',
+                       (student_id, subject_id, random.randint(2, 5), fake.date_this_decade()))
