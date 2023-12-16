@@ -48,3 +48,15 @@ cursor.execute('''
         date TEXT
     )
 ''')
+
+
+
+group_ids = [1, 2, 3]
+for group_id in group_ids:
+    cursor.execute('INSERT INTO groups (id, name) VALUES (?, ?)', (group_id, f'Group {group_id}'))
+
+for _ in range(30):
+    cursor.execute('INSERT INTO students (name, group_id) VALUES (?, ?)', (fake.name(), random.choice(group_ids)))
+
+for _ in range(3):
+    cursor.execute('INSERT INTO professors (name) VALUES (?)', (fake.name(),))
