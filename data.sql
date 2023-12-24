@@ -69,3 +69,16 @@ INSERT INTO groups (name) VALUES
 (1, 'Grupa 1'),
 (2, 'Grupa 2'),
 (3, 'Grupa 3');
+
+/*professors*/
+CREATE TABLE professors (
+    id INTEGER PRIMARY KEY,
+    name TEXT
+);
+
+INSERT INTO professors (professor_id, name) VALUES
+(1, 'Profesor Adamowicz'),
+(2, 'Profesor Bialkowski'),
+(3, 'Profesor Czajkowski'),
+(4, 'Profesor Dabrowski'),
+(5, 'Profesor Ejsmont');
