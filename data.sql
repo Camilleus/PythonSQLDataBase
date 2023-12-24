@@ -1,6 +1,6 @@
 /*students*/
 CREATE TABLE students (
-    id INTEGER PRIMARY KEY,
+    student_id INTEGER PRIMARY KEY,
     name TEXT,
     group_id INTEGER
 );
@@ -40,33 +40,31 @@ INSERT INTO students (student_id, name, group_id) VALUES
 
 /*subjects*/
 CREATE TABLE subjects (
-    id INTEGER PRIMARY KEY,
+    subject_id INTEGER PRIMARY KEY,
     name TEXT,
     professor_id INTEGER
 );
 
-
-INSERT INTO subjects (name, professor_id) VALUES
-('Mathematics', 1),
-('History', 2),
-('Computer Science', 3),
-('Worldwide Literature', 4),
-('Polish Literature', 5),
-('Physics', 6),
-('Biology', 7),
-('Geography', 8),
-('Chemistry', 9),
-('Grammary', 10),
-;
+INSERT INTO subjects (subject_id, name, professor_id) VALUES
+(1, 'Mathematics', 1),
+(2, 'History', 2),
+(3, 'Computer Science', 3),
+(4, 'Worldwide Literature', 4),
+(5, 'Polish Literature', 5),
+(6, 'Physics', 6),
+(7, 'Biology', 7),
+(8, 'Geography', 8),
+(9, 'Chemistry', 9),
+(10, 'Grammary', 10);
 
 
 /*groups*/
 CREATE TABLE groups (
-    id INTEGER PRIMARY KEY,
+    group_id INTEGER PRIMARY KEY,
     name TEXT
 );
 
-INSERT INTO groups (name) VALUES
+INSERT INTO groups (group_id, name) VALUES
 (1, 'Grupa 1'),
 (2, 'Grupa 2'),
 (3, 'Grupa 3');
@@ -74,7 +72,7 @@ INSERT INTO groups (name) VALUES
 
 /*professors*/
 CREATE TABLE professors (
-    id INTEGER PRIMARY KEY,
+    professor_id INTEGER PRIMARY KEY,
     name TEXT
 );
 
@@ -88,7 +86,7 @@ INSERT INTO professors (professor_id, name) VALUES
 
 /*grades*/
 CREATE TABLE grades (
-    id INTEGER PRIMARY KEY,
+    grade_id INTEGER PRIMARY KEY,
     student_id INTEGER,
     subject_id INTEGER,
     grade INTEGER,
@@ -104,4 +102,4 @@ INSERT INTO grades (student_id, subject_id, grade, date) VALUES
 (2, 5, 5, '2023-06-15'),
 (3, 1, 5, '2023-07-02'),
 (3, 2, 4, '2023-08-10'),
-(3, 3, 5, '2023-09-22'),
+(3, 3, 5, '2023-09-22');
