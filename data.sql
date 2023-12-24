@@ -34,7 +34,7 @@ INSERT INTO students (student_id, name, group_id) VALUES
 (26, 'Christopher Nowacki', 2),
 (27, 'Hannah Sikora', 1),
 (28, 'Camilleus Rex', 3),
-(29, 'Octavian August', 3),
+(29, 'August Leon', 3),
 (30, 'Matthias El Guerriero', 3);
 
 
