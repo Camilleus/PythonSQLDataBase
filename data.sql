@@ -45,10 +45,6 @@ CREATE TABLE subjects (
     professor_id INTEGER
 );
 
-INSERT INTO groups (name) VALUES
-(1, 'Grupa 1'),
-(2, 'Grupa 2'),
-(3, 'Grupa 3');
 
 INSERT INTO subjects (name, professor_id) VALUES
 ('Mathematics', 1),
@@ -62,3 +58,14 @@ INSERT INTO subjects (name, professor_id) VALUES
 ('Chemistry', 9),
 ('Grammary', 10),
 ;
+
+/*groups*/
+CREATE TABLE groups (
+    id INTEGER PRIMARY KEY,
+    name TEXT
+);
+
+INSERT INTO groups (name) VALUES
+(1, 'Grupa 1'),
+(2, 'Grupa 2'),
+(3, 'Grupa 3');
