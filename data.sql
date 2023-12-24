@@ -5,7 +5,7 @@ CREATE TABLE students (
     group_id INTEGER
 );
 
-INSERT INTO students (name, group_id) VALUES
+INSERT INTO students (student_id, name, group_id) VALUES
 (1, 'James Krasicki', 1),
 (2, 'Emily Nowak', 2),
 (3, 'Michael Wojcik', 1),
