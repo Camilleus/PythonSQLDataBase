@@ -7,8 +7,6 @@ fake = Faker()
 conn = sqlite3.connect('university.db')
 cursor = conn.cursor()
 
-
-
 cursor.execute('''
     CREATE TABLE students (
         id INTEGER PRIMARY KEY,
@@ -49,8 +47,6 @@ cursor.execute('''
     )
 ''')
 
-
-
 group_ids = [1, 2, 3]
 for group_id in group_ids:
     cursor.execute('INSERT INTO groups (id, name) VALUES (?, ?)', (group_id, f'Group {group_id}'))
@@ -71,7 +67,6 @@ for student_id in range(1, 31):
     for subject_id in subject_ids:
         cursor.execute('INSERT INTO grades (student_id, subject_id, grade, date) VALUES (?, ?, ?, ?)',
                        (student_id, subject_id, random.randint(2, 5), fake.date_this_decade()))
-
 
 conn.commit()
 conn.close()
