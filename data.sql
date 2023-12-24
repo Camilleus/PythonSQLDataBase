@@ -59,6 +59,7 @@ INSERT INTO subjects (name, professor_id) VALUES
 ('Grammary', 10),
 ;
 
+
 /*groups*/
 CREATE TABLE groups (
     id INTEGER PRIMARY KEY,
@@ -69,6 +70,7 @@ INSERT INTO groups (name) VALUES
 (1, 'Grupa 1'),
 (2, 'Grupa 2'),
 (3, 'Grupa 3');
+
 
 /*professors*/
 CREATE TABLE professors (
@@ -82,3 +84,13 @@ INSERT INTO professors (professor_id, name) VALUES
 (3, 'Profesor Czajkowski'),
 (4, 'Profesor Dabrowski'),
 (5, 'Profesor Ejsmont');
+
+
+/*grades*/
+CREATE TABLE grades (
+    id INTEGER PRIMARY KEY,
+    student_id INTEGER,
+    subject_id INTEGER,
+    grade INTEGER,
+    date TEXT
+);
