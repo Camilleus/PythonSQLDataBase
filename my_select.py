@@ -130,6 +130,18 @@ def select_11(session, professor_name, student_name):
     )
     return result
 
+def select_12(session, group_name, subject_name):
+    # Oceny studentów w określonej grupie z określonego przedmiotu na ostatnich zajęciach.
+    result = (
+        session.query(Student.name, Grade.value)
+        .join(Group, Student.group_id == Group.id)
+        .join(Grade, Student.id == Grade.student_id)
+        .join(Subject, Grade.subject_id == Subject.id)
+        .filter(Group.name == group_name, Subject.name == subject_name)
+        .order_by(Grade.created_at.desc())
+        .all()
+    )
+    return result
 
 my_select = input("What data do you want to receive?")
 
