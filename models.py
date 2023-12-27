@@ -13,3 +13,8 @@ class Student(Base):
     group = relationship('Group', back_populates='students')
     grades = relationship('Grade', back_populates='student')
 
+class Group(Base):
+    __tablename__ = 'groups'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    students = relationship('Student', back_populates='group')
