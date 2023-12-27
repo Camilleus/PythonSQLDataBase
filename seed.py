@@ -25,3 +25,11 @@ def create_groups(session, num_groups):
         groups.append(group)
         session.add(group)
     session.commit()
+    
+def create_subjects(session, num_subjects):
+    subjects = []
+    for _ in range(num_subjects):
+        subject = Subject(name=fake.worf())
+        subjects.append(subject)
+        session.add(subject)
+    session.commit()
