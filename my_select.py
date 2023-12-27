@@ -70,6 +70,18 @@ def select_6(session, group_name):
     )
     return result
 
+def select_7(session, group_name, subject_name):
+    # Oceny studentów w określonej grupie z danego przedmiotu.
+    result = (
+        session.query(Student.name, Grade.value)
+        .join(Group, Student.group_id == Group.id)
+        .join(Grade, Student.id == Grade.student_id)
+        .join(Subject, Grade.subject_id == Subject.id)
+        .filter(Group.name == group_name, Subject.name == subject_name)
+        .all()
+    )
+    return result
+
 my_select = input("What data do you want to receive?")
 
 if __name__ == '__main__':
