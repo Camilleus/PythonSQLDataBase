@@ -143,7 +143,32 @@ def select_12(session, group_name, subject_name):
     )
     return result
 
-my_select = input("What data do you want to receive?")
+select_functions = {
+    '1': select_1,
+    '2': select_2,
+    '3': select_3,
+    '4': select_4,
+    '5': select_5,
+    '6': select_6,
+    '7': select_7,
+    '8': select_8,
+    '9': select_9,
+    '10': select_10,
+    '11': select_11,
+    '12': select_12,
+}
+
+my_select = input("Choose a query (1-12): ")
+
+try:
+    my_select = int(my_select)
+    if 1 <= my_select <= 12:
+        result = select_functions[my_select](Session)
+        print(result)
+    else:
+        print("Invalid choice. Please choose a valid query number (1-12).")
+except ValueError:
+    print("Invalid input. Please enter a number.")
 
 if __name__ == '__main__':
     result = my_select()
