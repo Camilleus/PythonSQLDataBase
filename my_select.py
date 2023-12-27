@@ -14,6 +14,20 @@ def select_1(session):
     )
     return result
 
+def select_2(session, subject_name):
+    # Znajdź studenta z najwyższą średnią ocen z określonego przedmiotu.
+    result = (
+        session.query(Student.name, func.avg(Grade.value).label('average'))
+        .join(Grade, Student.id == Grade.student_id)
+        .join(Subject, Grade.subject_id == Subject.id)
+        .filter(Subject.name == subject_name)
+        .group_by(Student.id)
+        .order_by(func.avg(Grade.value).desc())
+        .first()
+    )
+    return result
+
+my_select = input("What data do you want to receive?")
 
 if __name__ == '__main__':
     result = my_select()
