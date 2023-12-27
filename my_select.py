@@ -82,6 +82,16 @@ def select_7(session, group_name, subject_name):
     )
     return result
 
+def select_8(session, professor_name):
+    # Średnia ocena wystawiona przez określonego wykładowcę z jego przedmiotów.
+    result = (
+        session.query(func.avg(Grade.value).label('average'))
+        .join(Professor, Grade.professor_id == Professor.id)
+        .filter(Professor.name == professor_name)
+        .scalar()
+    )
+    return result
+
 my_select = input("What data do you want to receive?")
 
 if __name__ == '__main__':
