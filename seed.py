@@ -64,3 +64,14 @@ db_port = '5432:5432'
 db_name = 'PythonPostGresV1'
 
 engine = create_engine(f'postgresql+psycopg2://{db_username}:{db_password}@{db_host}:{db_port}/{db_name}')
+
+Session = sessionmaker(bind=engine)
+session = Session()
+
+create_groups(session, 3)
+create_subjects(session, 8)
+create_Professors(session, 5)
+create_students(session, 30)
+create_grades(session, 20)
+
+session.close()
