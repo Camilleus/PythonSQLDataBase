@@ -92,6 +92,18 @@ def select_8(session, professor_name):
     )
     return result
 
+def select_9(session, student_name):
+    # Lista przedmiotów zaliczonych przez danego studenta.
+    result = (
+        session.query(Subject.name)
+        .join(Grade, Subject.id == Grade.subject_id)
+        .join(Student, Grade.student_id == Student.id)
+        .filter(Student.name == student_name, Grade.value >= 3)
+        .distinct()
+        .all()
+    )
+    return result
+
 my_select = input("What data do you want to receive?")
 
 if __name__ == '__main__':
