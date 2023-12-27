@@ -21,7 +21,7 @@ def create_students(session, num_students):
 def create_groups(session, num_groups):
     groups = []
     for _ in range(num_groups):
-        group = Group(name=fake.worf())
+        group = Group(name=fake.word())
         groups.append(group)
         session.add(group)
     session.commit()
@@ -29,7 +29,7 @@ def create_groups(session, num_groups):
 def create_subjects(session, num_subjects):
     subjects = []
     for _ in range(num_subjects):   
-        subject = Subject(name=fake.worf())
+        subject = Subject(name=fake.word())
         subjects.append(subject)
         session.add(subject)
     session.commit()
