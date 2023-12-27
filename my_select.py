@@ -48,6 +48,18 @@ def select_4(session):
     )
     return result
 
+def select_5(session, professor_name):
+    # Przedmioty, których uczy określony wykładowca.
+    result = (
+        session.query(Subject.name)
+        .join(Grade, Subject.id == Grade.subject_id)
+        .join(Professor, Grade.professor_id == Professor.id)
+        .filter(Professor.name == professor_name)
+        .distinct()
+        .all()
+    )
+    return result
+
 
 my_select = input("What data do you want to receive?")
 
