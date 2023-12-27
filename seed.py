@@ -28,8 +28,16 @@ def create_groups(session, num_groups):
     
 def create_subjects(session, num_subjects):
     subjects = []
-    for _ in range(num_subjects):
+    for _ in range(num_subjects):   
         subject = Subject(name=fake.worf())
         subjects.append(subject)
         session.add(subject)
+    session.commit()
+    
+def create_teachers(session, num_teachers):
+    teachers = []
+    for _ in range(num_teachers):
+        teacher = Teacher(name=fake.name())
+        teachers.append(teacher)
+        session.add(teacher)
     session.commit()
