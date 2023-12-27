@@ -104,6 +104,19 @@ def select_9(session, student_name):
     )
     return result
 
+def select_10(session, professor_name, student_name):
+    # Lista kursów prowadzonych przez określonego wykładowcę dla określonego studenta.
+    result = (
+        session.query(Subject.name)
+        .join(Grade, Subject.id == Grade.subject_id)
+        .join(Professor, Grade.professor_id == Professor.id)
+        .join(Student, Grade.student_id == Student.id)
+        .filter(Professor.name == professor_name, Student.name == student_name)
+        .distinct()
+        .all()
+    )
+    return result
+
 my_select = input("What data do you want to receive?")
 
 if __name__ == '__main__':
