@@ -18,3 +18,9 @@ class Group(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     students = relationship('Student', back_populates='group')
+    
+class Professor(Base):
+    __tablename__ = 'professors'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    subjects = relationship('Subject', back_populates='professor')
