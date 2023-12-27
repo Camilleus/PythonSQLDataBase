@@ -32,3 +32,13 @@ class Subject(Base):
     professor_id = Column(Integer, ForeignKey('professors.id'))
     professor = relationship('Professor', back_populates='subjects')
     grades = relationship('Grade', back_populates='subject')
+    
+class Grade(Base):
+    __tablename__ = 'grades'
+    id = Column(Integer, primary_key=True)
+    student_id = Column(Integer, ForeignKey('students.id'))
+    subject_id = Column(Integer, ForeignKey('subjects.id'))
+    grade = Column(Integer)
+    date = Column(DateTime, default=func.now())
+    student = relationship('Student', back_populates='grades')
+    subject = relationship('Subject', back_populates='grades')
