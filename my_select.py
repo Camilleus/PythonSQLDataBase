@@ -3,7 +3,7 @@ from sqlalchemy import func
 
 
 def select_1(session):
-    # Znajdź 5 studentów z najwyższą średnią ocen ze wszystkich przedmiotów.
+    # 5 studentów z najwyższą średnią ocen ze wszystkich przedmiotów.
     result = (
         session.query(Student.name, func.avg(Grade.value).label('average'))
         .join(Grade, Student.id == Grade.student_id)
@@ -15,7 +15,7 @@ def select_1(session):
     return result
 
 def select_2(session, subject_name):
-    # Znajdź studenta z najwyższą średnią ocen z określonego przedmiotu.
+    # Student z najwyższą średnią ocen z określonego przedmiotu.
     result = (
         session.query(Student.name, func.avg(Grade.value).label('average'))
         .join(Grade, Student.id == Grade.student_id)
@@ -28,7 +28,7 @@ def select_2(session, subject_name):
     return result
 
 def select_3(session, subject_name):
-    # Znajdź średni wynik w grupach dla określonego przedmiotu.
+    # Średni wynik w grupach dla określonego przedmiotu.
     result = (
         session.query(Group.name, func.avg(Grade.value).label('average'))
         .join(Student, Group.id == Student.group_id)
