@@ -158,18 +158,20 @@ select_functions = {
     '12': select_12,
 }
 
-my_select = input("Choose a query (1-12): ")
+def is_database_empty(session):
+    return session.query(func.count('*')).select_from(Student).scalar() == 0
 
-try:
-    my_select = int(my_select)
-    if 1 <= my_select <= 12:
-        result = select_functions[my_select](Session)
-        print(result)
-    else:
-        print("Invalid choice. Please choose a valid query number (1-12).")
-except ValueError:
-    print("Invalid input. Please enter a number.")
+if is_database_empty(Session):
+    print("Database is empty. Please run the seed script first.")
+else:
+    my_select = input("Choose a query (1-12): ")
 
-if __name__ == '__main__':
-    result = my_select()
-    print(result)
+    try:
+        my_select = int(my_select)
+        if 1 <= my_select <= 12:
+            result = select_functions[str(my_select)](Session)
+            print(result)
+        else:
+            print("Invalid choice. Please choose a valid query number (1-12).")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
