@@ -24,3 +24,11 @@ class Professor(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     subjects = relationship('Subject', back_populates='professor')
+    
+class Subject(Base):
+    __tablename__ = 'subjects'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    professor_id = Column(Integer, ForeignKey('professors.id'))
+    professor = relationship('Professor', back_populates='subjects')
+    grades = relationship('Grade', back_populates='subject')
