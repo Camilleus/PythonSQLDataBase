@@ -40,6 +40,15 @@ def select_3(session, subject_name):
     )
     return result
 
+def select_4(session):
+    # Średni wynik w grupie (w całej tabeli ocen).
+    result = (
+        session.query(func.avg(Grade.value).label('average'))
+        .scalar()
+    )
+    return result
+
+
 my_select = input("What data do you want to receive?")
 
 if __name__ == '__main__':
