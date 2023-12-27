@@ -43,7 +43,7 @@ class Grade(Base):
     student = relationship('Student', back_populates='grades')
     subject = relationship('Subject', back_populates='grades')
 
-engine = create_engine('postgresql://postgres:mysecretpassword@localhost:5432/mydatabase')
+engine = create_engine('postgresql://postgres:J3st3mM1l1on3r3m@localhost:5432/PythonPostgresV1')
 
 Base.metadata.create_all(engine)
 
