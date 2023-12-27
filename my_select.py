@@ -27,6 +27,19 @@ def select_2(session, subject_name):
     )
     return result
 
+def select_3(session, subject_name):
+    # Znajdź średni wynik w grupach dla określonego przedmiotu.
+    result = (
+        session.query(Group.name, func.avg(Grade.value).label('average'))
+        .join(Student, Group.id == Student.group_id)
+        .join(Grade, Student.id == Grade.student_id)
+        .join(Subject, Grade.subject_id == Subject.id)
+        .filter(Subject.name == subject_name)
+        .group_by(Group.id)
+        .all()
+    )
+    return result
+
 my_select = input("What data do you want to receive?")
 
 if __name__ == '__main__':
