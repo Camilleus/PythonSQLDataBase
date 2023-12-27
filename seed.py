@@ -56,3 +56,11 @@ def create_grades(session, num_grades):
         )
         session.add(grade)
     session.commit()
+
+db_username = 'Camilleus'
+db_password = 'J3St3MM1L10N3R3M'
+db_host = 'localhost'
+db_port = '5432:5432'
+db_name = 'PythonPostGresV1'
+
+engine = create_engine(f'postgresql+psycopg2://{db_username}:{db_password}@{db_host}:{db_port}/{db_name}')
