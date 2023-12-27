@@ -60,6 +60,15 @@ def select_5(session, professor_name):
     )
     return result
 
+def select_6(session, group_name):
+    # Lista studentów w określonej grupie.
+    result = (
+        session.query(Student.name)
+        .join(Group, Student.group_id == Group.id)
+        .filter(Group.name == group_name)
+        .all()
+    )
+    return result
 
 my_select = input("What data do you want to receive?")
 
