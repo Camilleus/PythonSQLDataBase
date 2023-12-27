@@ -34,10 +34,25 @@ def create_subjects(session, num_subjects):
         session.add(subject)
     session.commit()
     
-def create_teachers(session, num_teachers):
-    teachers = []
-    for _ in range(num_teachers):
-        teacher = Teacher(name=fake.name())
-        teachers.append(teacher)
-        session.add(teacher)
+def create_Professors(session, num_Professors):
+    Professors = []
+    for _ in range(num_Professors):
+        Professor = Professor(name=fake.name())
+        Professors.append(Professor)
+        session.add(Professor)
+    session.commit()
+    
+def create_grades(session, num_grades):
+    students = session.query(Student).all()
+    subjects = session.query(Subject).all()
+    Professors = session.query(Professor).all()
+
+    for _ in range(num_grades):
+        grade = Grade(
+            value=random.randint(2, 5),
+            student_id=random.choice(students).id,
+            subject_id=random.choice(subjects).id,
+            Professor_id=random.choice(Professors).id
+        )
+        session.add(grade)
     session.commit()
