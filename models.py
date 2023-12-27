@@ -32,7 +32,7 @@ class Subject(Base):
     professor_id = Column(Integer, ForeignKey('professors.id'))
     professor = relationship('Professor', back_populates='subjects')
     grades = relationship('Grade', back_populates='subject')
-    
+
 class Grade(Base):
     __tablename__ = 'grades'
     id = Column(Integer, primary_key=True)
