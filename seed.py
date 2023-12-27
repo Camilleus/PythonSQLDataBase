@@ -17,3 +17,11 @@ def create_students(session, num_students):
         students.append(student)
         session.add(student)
     session.commit()
+    
+def create_groups(session, num_groups):
+    groups = []
+    for _ in range(num_groups):
+        group = Group(name=fake.worf())
+        groups.append(group)
+        session.add(group)
+    session.commit()
